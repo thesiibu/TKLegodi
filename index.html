@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tshepo &amp; Kelebogile — RSVP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#f8f6f1;
+    --ink:#1c1b19;
+    --charcoal:#4a453e;
+    --hair:#d9d3c7;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--ivory);
+    background-image:radial-gradient(circle at 1px 1px, rgba(28,27,25,0.05) 1px, transparent 0);
+    background-size:22px 22px;
+    color:var(--ink);
+    font-family:'EB Garamond', serif;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{ max-width:640px; margin:0 auto; padding:56px 28px 80px; }
+
+  .bow-wrap{ display:flex; align-items:flex-start; gap:18px; margin-bottom:6px; }
+  .bow-wrap svg{ flex:0 0 auto; width:74px; height:74px; margin-top:-10px; }
+  .from-block{ padding-top:14px; }
+  .from-label{ font-family:'Cormorant Garamond', serif; font-weight:600; letter-spacing:0.22em; font-size:15px; text-transform:uppercase; margin:0 0 6px; }
+  .from-sub{ font-family:'EB Garamond', serif; font-style:italic; color:var(--charcoal); font-size:16px; margin:0; }
+
+  .rule{ border:none; border-top:1px solid var(--hair); margin:36px 0; }
+
+  .hero{ text-align:center; margin:8px 0 10px; }
+  .hero .script{ font-family:'Pinyon Script', cursive; font-size:112px; line-height:0.92; margin:0; }
+  .hero .the{ font-family:'Pinyon Script', cursive; font-size:34px; display:block; margin:2px 0; }
+  .dates{ text-align:center; font-family:'Cormorant Garamond', serif; font-weight:600; letter-spacing:0.06em; font-size:20px; margin:18px 0 0; }
+  .venue-note{ text-align:center; font-family:'EB Garamond', serif; font-style:italic; color:var(--charcoal); font-size:15px; margin:10px 0 0; }
+
+  .card{ background:var(--white); border:1px solid var(--hair); padding:40px 34px; margin-top:44px; position:relative; }
+  .card:before, .card:after{ content:""; position:absolute; width:14px; height:14px; border:1px solid var(--ink); }
+  .card:before{ top:8px; left:8px; border-right:none; border-bottom:none; }
+  .card:after{ bottom:8px; right:8px; border-left:none; border-top:none; }
+  .card h2{ font-family:'Cormorant Garamond', serif; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; font-size:17px; text-align:center; margin:0 0 6px; }
+  .card .card-sub{ text-align:center; font-style:italic; color:var(--charcoal); font-size:15px; margin:0 0 30px; }
+
+  label{ display:block; font-family:'Cormorant Garamond', serif; font-weight:600; letter-spacing:0.05em; font-size:14px; text-transform:uppercase; margin:22px 0 8px; }
+  label:first-of-type{ margin-top:0; }
+
+  input[type="text"], input[type="number"], input[type="email"], textarea{
+    width:100%; font-family:'EB Garamond', serif; font-size:17px; padding:10px 4px;
+    border:none; border-bottom:1px solid var(--hair); background:transparent; color:var(--ink);
+    outline:none; transition:border-color .2s ease;
+  }
+  input:focus, textarea:focus{ border-bottom-color:var(--ink); }
+  textarea{ resize:vertical; min-height:70px; }
+
+  .toggle-row{ display:flex; gap:12px; }
+  .toggle-btn{
+    flex:1; padding:12px 10px; text-align:center; border:1px solid var(--hair);
+    font-family:'Cormorant Garamond', serif; letter-spacing:0.08em; font-size:15px; text-transform:uppercase;
+    background:var(--ivory); cursor:pointer; transition:all .15s ease; user-select:none;
+  }
+  .toggle-btn.active{ background:var(--ink); color:var(--white); border-color:var(--ink); }
+  .toggle-btn:focus-visible{ outline:2px solid var(--ink); outline-offset:2px; }
+
+  .days-row{ display:flex; gap:12px; }
+  .day-chip{
+    flex:1; padding:10px 8px; text-align:center; border:1px solid var(--hair); font-size:15px;
+    cursor:pointer; background:var(--ivory); transition:all .15s ease; user-select:none;
+  }
+  .day-chip.active{ background:var(--ink); color:var(--white); border-color:var(--ink); }
+  .day-chip:focus-visible{ outline:2px solid var(--ink); outline-offset:2px; }
+  .days-block{ display:none; }
+  .days-block.show{ display:block; }
+
+  .submit-btn{
+    width:100%; margin-top:32px; padding:14px; background:var(--ink); color:var(--white); border:none;
+    font-family:'Cormorant Garamond', serif; letter-spacing:0.14em; text-transform:uppercase; font-size:15px;
+    cursor:pointer; transition:opacity .15s ease;
+  }
+  .submit-btn:hover{ opacity:0.85; }
+  .submit-btn:disabled{ opacity:0.5; cursor:default; }
+
+  .msg{ text-align:center; font-style:italic; color:var(--charcoal); font-size:15px; margin-top:16px; min-height:18px; }
+
+  .confirmation{ text-align:center; padding:20px 10px 4px; }
+  .confirmation .script-small{ font-family:'Pinyon Script', cursive; font-size:44px; margin:0 0 8px; }
+  .confirmation p{ font-size:17px; color:var(--charcoal); margin:0; }
+
+  footer{ text-align:center; font-style:italic; color:var(--charcoal); font-size:13px; margin-top:60px; }
+
+  @media (max-width:420px){
+    .hero .script{ font-size:82px; }
+    .card{ padding:30px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="bow-wrap">
+    <svg viewBox="0 0 100 100" aria-hidden="true">
+      <line x1="10" y1="90" x2="90" y2="10" stroke="var(--ink)" stroke-width="2"/>
+      <g>
+        <path d="M50 50 L15 20 Q5 15 12 32 Q18 45 50 50 Z" fill="var(--ink)"/>
+        <path d="M50 50 L85 25 Q95 18 86 34 Q78 46 50 50 Z" fill="var(--ink)"/>
+        <path d="M50 50 L20 70 Q12 78 26 76 Q40 73 50 50 Z" fill="var(--ink)"/>
+        <circle cx="50" cy="50" r="7" fill="var(--ink)"/>
+        <g fill="var(--white)">
+          <circle cx="22" cy="26" r="2.4"/><circle cx="32" cy="34" r="2.4"/><circle cx="14" cy="34" r="2"/>
+          <circle cx="76" cy="28" r="2.4"/><circle cx="66" cy="34" r="2.2"/><circle cx="84" cy="34" r="2"/>
+          <circle cx="27" cy="66" r="2.2"/><circle cx="19" cy="72" r="2"/>
+        </g>
+      </g>
+    </svg>
+    <div class="from-block">
+      <p class="from-label">From Tshepo and Kelebogile</p>
+      <p class="from-sub">Join us as we celebrate our love story</p>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <div class="hero">
+    <p class="script" style="margin-bottom:-14px;">Save</p>
+    <span class="the">the</span>
+    <p class="script">Date</p>
+  </div>
+  <p class="dates">Friday 09 and Saturday 10 October 2026</p>
+  <p class="venue-note">Please let us know if we can expect you</p>
+
+  <div class="card">
+    <h2>RSVP</h2>
+    <p class="card-sub">We would be so glad to have you with us</p>
+
+    <!--
+      ⚠️ SETUP: replace YOUR_FORM_ID below with your real Formspree endpoint.
+      1. Go to https://formspree.io and sign up free
+      2. Create a new form, copy the endpoint (looks like https://formspree.io/f/abc1234)
+      3. Paste it in place of the action URL two lines down
+    -->
+    <form id="rsvpForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <label for="name">Your full name</label>
+      <input type="text" id="name" name="name" required placeholder="e.g. Naledi Mokoena">
+
+      <input type="hidden" id="attendingField" name="attending" value="">
+      <label>Will you be attending?</label>
+      <div class="toggle-row" role="group" aria-label="Attending">
+        <div class="toggle-btn" data-value="Yes" tabindex="0">Joyfully accept</div>
+        <div class="toggle-btn" data-value="No" tabindex="0">Regretfully decline</div>
+      </div>
+
+      <div class="days-block" id="daysBlock">
+        <input type="hidden" id="daysField" name="days" value="">
+        <label>Which day(s)?</label>
+        <div class="days-row" role="group" aria-label="Days attending">
+          <div class="day-chip" data-day="Friday 09 Oct" tabindex="0">Fri 09 Oct</div>
+          <div class="day-chip" data-day="Saturday 10 Oct" tabindex="0">Sat 10 Oct</div>
+        </div>
+
+        <label for="guestCount">Number of guests (including you)</label>
+        <input type="number" id="guestCount" name="guests" min="1" max="10" value="1">
+
+        <label for="notes">Dietary requirements or a message for the couple</label>
+        <textarea id="notes" name="notes" placeholder="Optional"></textarea>
+      </div>
+
+      <input type="hidden" name="_subject" value="New RSVP — Tshepo & Kelebogile">
+
+      <button type="submit" class="submit-btn" id="submitBtn">Send RSVP</button>
+      <p class="msg" id="formMsg"></p>
+    </form>
+
+    <div class="confirmation" id="confirmation" style="display:none;">
+      <p class="script-small">Thank you</p>
+      <p id="confirmationText"></p>
+    </div>
+  </div>
+
+  <footer>A formal closed invitation to follow</footer>
+</div>
+
+<script>
+let attending = null;
+let selectedDays = new Set();
+
+document.querySelectorAll('.toggle-btn').forEach(btn=>{
+  const activate = ()=>{
+    document.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    attending = btn.dataset.value;
+    document.getElementById('attendingField').value = attending;
+    document.getElementById('daysBlock').classList.toggle('show', attending==='Yes');
+  };
+  btn.addEventListener('click', activate);
+  btn.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); activate(); }});
+});
+
+document.querySelectorAll('.day-chip').forEach(chip=>{
+  const toggle = ()=>{
+    chip.classList.toggle('active');
+    const day = chip.dataset.day;
+    if(selectedDays.has(day)) selectedDays.delete(day); else selectedDays.add(day);
+    document.getElementById('daysField').value = Array.from(selectedDays).join(' & ');
+  };
+  chip.addEventListener('click', toggle);
+  chip.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggle(); }});
+});
+
+const form = document.getElementById('rsvpForm');
+form.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const msgEl = document.getElementById('formMsg');
+  const name = document.getElementById('name').value.trim();
+
+  if(!name){ msgEl.textContent = "Please tell us your name."; return; }
+  if(!attending){ msgEl.textContent = "Please let us know if you can make it."; return; }
+  if(attending === 'Yes' && selectedDays.size === 0){ msgEl.textContent = "Please select at least one day."; return; }
+
+  const submitBtn = document.getElementById('submitBtn');
+  submitBtn.disabled = true;
+  msgEl.textContent = "Sending...";
+
+  try{
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if(response.ok){
+      form.style.display = 'none';
+      const conf = document.getElementById('confirmation');
+      conf.style.display = 'block';
+      document.getElementById('confirmationText').textContent =
+        attending === 'Yes'
+          ? `We can't wait to celebrate with you, ${name}.`
+          : `We'll miss you, ${name} — thank you for letting us know.`;
+    } else {
+      throw new Error('Formspree error');
+    }
+  }catch(err){
+    msgEl.textContent = "Something went wrong — please try again, or check your Formspree setup.";
+    submitBtn.disabled = false;
+  }
+});
+</script>
+</body>
+</html>
