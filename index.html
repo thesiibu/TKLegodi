@@ -42,6 +42,30 @@
   .dates{ text-align:center; font-family:'Cormorant Garamond', serif; font-weight:600; letter-spacing:0.06em; font-size:20px; margin:18px 0 0; }
   .venue-note{ text-align:center; font-family:'EB Garamond', serif; font-style:italic; color:var(--charcoal); font-size:15px; margin:10px 0 0; }
 
+  /* ---------- Schedule ---------- */
+  .schedule{ margin-top:40px; }
+  .schedule-item{ padding:18px 0; }
+  .schedule-name{
+    font-family:'Pinyon Script', cursive; font-size:32px; text-align:center; margin:0 0 8px; line-height:1.1;
+  }
+  .schedule-detail{
+    text-align:center; font-size:16px; color:var(--charcoal); margin:2px 0;
+  }
+  .schedule-detail strong{ color:var(--ink); font-family:'Cormorant Garamond', serif; }
+  .dress-code{
+    font-family:'Pinyon Script', cursive; font-size:30px; text-align:center; margin:20px 0 2px;
+  }
+  .dress-code-note{
+    font-family:'Cormorant Garamond', serif; font-weight:600; letter-spacing:0.08em; font-size:14px;
+    text-transform:uppercase; text-align:center; margin:0;
+  }
+
+  /* ---------- Well Wishes ---------- */
+  .wish-entry{ padding:14px 0; border-bottom:1px solid var(--hair); }
+  .wish-entry:last-child{ border-bottom:none; }
+  .wish-name{ font-family:'Cormorant Garamond', serif; font-weight:600; font-size:17px; margin:0; }
+  .wish-message{ font-size:16px; color:var(--charcoal); margin:4px 0 0; font-style:italic; }
+
   .card{ background:var(--white); border:1px solid var(--hair); padding:40px 34px; margin-top:44px; position:relative; }
   .card:before, .card:after{ content:""; position:absolute; width:14px; height:14px; border:1px solid var(--ink); }
   .card:before{ top:8px; left:8px; border-right:none; border-bottom:none; }
@@ -52,7 +76,7 @@
   label{ display:block; font-family:'Cormorant Garamond', serif; font-weight:600; letter-spacing:0.05em; font-size:14px; text-transform:uppercase; margin:22px 0 8px; }
   label:first-of-type{ margin-top:0; }
 
-  input[type="text"], input[type="number"], input[type="email"], textarea{
+  input[type="text"], input[type="number"], input[type="password"], textarea{
     width:100%; font-family:'EB Garamond', serif; font-size:17px; padding:10px 4px;
     border:none; border-bottom:1px solid var(--hair); background:transparent; color:var(--ink);
     outline:none; transition:border-color .2s ease;
@@ -92,6 +116,45 @@
   .confirmation{ text-align:center; padding:20px 10px 4px; }
   .confirmation .script-small{ font-family:'Pinyon Script', cursive; font-size:44px; margin:0 0 8px; }
   .confirmation p{ font-size:17px; color:var(--charcoal); margin:0; }
+
+  /* ---------- Console ---------- */
+  .host-link{ text-align:center; margin-top:40px; }
+  .host-link button{
+    background:none; border:none; font-family:'EB Garamond', serif; font-style:italic;
+    color:var(--charcoal); font-size:14px; text-decoration:underline; cursor:pointer; padding:6px;
+  }
+
+  .host-panel{ display:none; margin-top:24px; border:1px solid var(--hair); background:var(--white); padding:32px 26px; }
+  .host-panel.show{ display:block; }
+
+  .host-gate{ text-align:center; }
+  .host-gate input{ max-width:220px; margin:0 auto 16px; text-align:center; }
+  .host-gate button{
+    background:var(--ink); color:var(--white); border:none; padding:10px 22px;
+    font-family:'Cormorant Garamond', serif; letter-spacing:0.1em; text-transform:uppercase; font-size:14px; cursor:pointer;
+  }
+
+  .host-body{ display:none; }
+  .host-body.show{ display:block; }
+
+  .summary-row{
+    display:flex; justify-content:space-around; text-align:center;
+    padding-bottom:24px; border-bottom:1px solid var(--hair); margin-bottom:24px;
+  }
+  .summary-row div span{ display:block; font-family:'Cormorant Garamond', serif; font-size:30px; font-weight:600; }
+  .summary-row div small{ font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--charcoal); }
+
+  .guest-entry{ padding:16px 0; border-bottom:1px solid var(--hair); }
+  .guest-entry:last-child{ border-bottom:none; }
+  .guest-entry .g-name{ font-family:'Cormorant Garamond', serif; font-weight:600; font-size:19px; display:flex; justify-content:space-between; align-items:baseline; gap:10px; }
+  .g-status{ font-size:12px; letter-spacing:0.06em; text-transform:uppercase; padding:3px 8px; border:1px solid var(--ink); white-space:nowrap; }
+  .g-status.yes{ background:var(--ink); color:var(--white); }
+  .guest-entry .g-detail{ font-size:15px; color:var(--charcoal); margin-top:4px; }
+  .empty-note{ text-align:center; font-style:italic; color:var(--charcoal); padding:20px 0; }
+  .refresh-btn{
+    display:block; margin:20px auto 0; background:none; border:1px solid var(--hair); padding:8px 18px;
+    font-family:'EB Garamond', serif; font-style:italic; font-size:14px; cursor:pointer;
+  }
 
   footer{ text-align:center; font-style:italic; color:var(--charcoal); font-size:13px; margin-top:60px; }
 
@@ -135,15 +198,48 @@
   <p class="dates">Friday 09 and Saturday 10 October 2026</p>
   <p class="venue-note">Please let us know if we can expect you</p>
 
+  <hr class="rule">
+
+  <div class="schedule">
+    <div class="schedule-item">
+      <p class="schedule-name">Re Hlabisa Magadi A Ga Legodi</p>
+      <p class="schedule-detail"><strong>Date:</strong> 09 October 2026</p>
+      <p class="schedule-detail">2155B Relebone Street, Naledi, Soweto</p>
+      <p class="schedule-detail"><strong>Time:</strong> 10:00am</p>
+    </div>
+
+    <hr class="rule">
+
+    <div class="schedule-item">
+      <p class="schedule-name">Re Gorosa Ngwetsi Ya Ga Legodi</p>
+      <p class="schedule-detail"><strong>Date:</strong> 10 October 2026</p>
+      <p class="schedule-detail">37 Beryl Street, Cyrildene, Johannesburg</p>
+      <p class="schedule-detail"><strong>Time:</strong> 10:00am – 14:00pm</p>
+    </div>
+
+    <hr class="rule">
+
+    <div class="schedule-item">
+      <p class="schedule-name">Afternoon Braai</p>
+      <p class="schedule-detail"><strong>Time:</strong> 16:00pm till late</p>
+    </div>
+
+    <hr class="rule">
+
+    <p class="dress-code">Dress Code</p>
+    <p class="dress-code-note">Please wear your traditional clothes</p>
+  </div>
+
+  <hr class="rule">
+
   <div class="card">
     <h2>RSVP</h2>
     <p class="card-sub">We would be so glad to have you with us</p>
 
-    <form id="rsvpForm" action="https://formspree.io/f/xjybzpdd" method="POST">
+    <form id="rsvpForm">
       <label for="name">Your full name</label>
-      <input type="text" id="name" name="name" required placeholder="e.g. Naledi Mokoena">
+      <input type="text" id="name" required placeholder="e.g. Naledi Mokoena">
 
-      <input type="hidden" id="attendingField" name="attending" value="">
       <label>Will you be attending?</label>
       <div class="toggle-row" role="group" aria-label="Attending">
         <div class="toggle-btn" data-value="Yes" tabindex="0">Joyfully accept</div>
@@ -151,7 +247,6 @@
       </div>
 
       <div class="days-block" id="daysBlock">
-        <input type="hidden" id="daysField" name="days" value="">
         <label>Which day(s)?</label>
         <div class="days-row" role="group" aria-label="Days attending">
           <div class="day-chip" data-day="Friday 09 Oct" tabindex="0">Fri 09 Oct</div>
@@ -159,13 +254,11 @@
         </div>
 
         <label for="guestCount">Number of guests (including you)</label>
-        <input type="number" id="guestCount" name="guests" min="1" max="10" value="1">
+        <input type="number" id="guestCount" min="1" max="10" value="1">
 
         <label for="notes">Dietary requirements or a message for the couple</label>
-        <textarea id="notes" name="notes" placeholder="Optional"></textarea>
+        <textarea id="notes" placeholder="Optional"></textarea>
       </div>
-
-      <input type="hidden" name="_subject" value="New RSVP — Tshepo & Kelebogile">
 
       <button type="submit" class="submit-btn" id="submitBtn">Send RSVP</button>
       <p class="msg" id="formMsg"></p>
@@ -177,73 +270,274 @@
     </div>
   </div>
 
+  <div class="card">
+    <h2>Well Wishes</h2>
+    <p class="card-sub">Leave a message for Tshepo &amp; Kelebogile</p>
+
+    <form id="wishForm">
+      <label for="wishName">Your name</label>
+      <input type="text" id="wishName" required placeholder="e.g. Naledi Mokoena">
+
+      <label for="wishMessage">Your message</label>
+      <textarea id="wishMessage" required placeholder="Share your well wishes..."></textarea>
+
+      <button type="submit" class="submit-btn" id="wishSubmitBtn">Post Well Wishes</button>
+      <p class="msg" id="wishMsg"></p>
+    </form>
+
+    <div id="wishList" style="margin-top:26px;"></div>
+    <p class="empty-note" id="wishEmptyNote" style="display:none;">Be the first to leave a message.</p>
+  </div>
+
+  <div class="host-link">
+    <button id="hostToggle" type="button">Tshepo &amp; Kelebogile — view RSVPs</button>
+  </div>
+
+  <div class="host-panel" id="hostPanel">
+    <div class="host-gate" id="hostGate">
+      <p class="card-sub" style="margin-bottom:18px;">Enter the couple's passcode</p>
+      <input type="password" id="passcode" placeholder="Passcode">
+      <br>
+      <button type="button" id="passcodeSubmit">View responses</button>
+      <p class="msg" id="gateMsg"></p>
+    </div>
+
+    <div class="host-body" id="hostBody">
+      <div class="summary-row">
+        <div><span id="sumYes">0</span><small>Attending</small></div>
+        <div><span id="sumNo">0</span><small>Not attending</small></div>
+        <div><span id="sumGuests">0</span><small>Total guests</small></div>
+      </div>
+      <div id="guestList"></div>
+      <p class="empty-note" id="emptyNote" style="display:none;">No RSVPs yet — once guests respond, they'll appear here.</p>
+      <button class="refresh-btn" id="refreshBtn" type="button">Refresh list</button>
+    </div>
+  </div>
+
   <footer>A formal closed invitation to follow</footer>
 </div>
 
 <script>
-let attending = null;
-let selectedDays = new Set();
+  // ⚠️ SETUP: paste your deployed Google Apps Script Web App URL here.
+  // See README.md — it looks like: https://script.google.com/macros/s/AKfycb.../exec
+  const API_URL = "PASTE_YOUR_APPS_SCRIPT_URL_HERE";
 
-document.querySelectorAll('.toggle-btn').forEach(btn=>{
-  const activate = ()=>{
-    document.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    attending = btn.dataset.value;
-    document.getElementById('attendingField').value = attending;
-    document.getElementById('daysBlock').classList.toggle('show', attending==='Yes');
-  };
-  btn.addEventListener('click', activate);
-  btn.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); activate(); }});
-});
+  // Client-side passcode shown to the couple. Change this to whatever you like —
+  // it must match the PASSWORD value in the Apps Script (Code.gs) too.
+  const HOST_PASSCODE = "TK2026";
 
-document.querySelectorAll('.day-chip').forEach(chip=>{
-  const toggle = ()=>{
-    chip.classList.toggle('active');
-    const day = chip.dataset.day;
-    if(selectedDays.has(day)) selectedDays.delete(day); else selectedDays.add(day);
-    document.getElementById('daysField').value = Array.from(selectedDays).join(' & ');
-  };
-  chip.addEventListener('click', toggle);
-  chip.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggle(); }});
-});
+  let attending = null;
+  let selectedDays = new Set();
 
-const form = document.getElementById('rsvpForm');
-form.addEventListener('submit', async (e)=>{
-  e.preventDefault();
-  const msgEl = document.getElementById('formMsg');
-  const name = document.getElementById('name').value.trim();
+  document.querySelectorAll('.toggle-btn').forEach(btn=>{
+    const activate = ()=>{
+      document.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      attending = btn.dataset.value;
+      document.getElementById('daysBlock').classList.toggle('show', attending==='Yes');
+    };
+    btn.addEventListener('click', activate);
+    btn.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); activate(); }});
+  });
 
-  if(!name){ msgEl.textContent = "Please tell us your name."; return; }
-  if(!attending){ msgEl.textContent = "Please let us know if you can make it."; return; }
-  if(attending === 'Yes' && selectedDays.size === 0){ msgEl.textContent = "Please select at least one day."; return; }
+  document.querySelectorAll('.day-chip').forEach(chip=>{
+    const toggle = ()=>{
+      chip.classList.toggle('active');
+      const day = chip.dataset.day;
+      if(selectedDays.has(day)) selectedDays.delete(day); else selectedDays.add(day);
+    };
+    chip.addEventListener('click', toggle);
+    chip.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggle(); }});
+  });
 
-  const submitBtn = document.getElementById('submitBtn');
-  submitBtn.disabled = true;
-  msgEl.textContent = "Sending...";
+  document.getElementById('rsvpForm').addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const msgEl = document.getElementById('formMsg');
+    const name = document.getElementById('name').value.trim();
 
-  try{
-    const response = await fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    });
+    if(!name){ msgEl.textContent = "Please tell us your name."; return; }
+    if(!attending){ msgEl.textContent = "Please let us know if you can make it."; return; }
+    if(attending === 'Yes' && selectedDays.size === 0){ msgEl.textContent = "Please select at least one day."; return; }
 
-    if(response.ok){
-      form.style.display = 'none';
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = true;
+    msgEl.textContent = "Sending...";
+
+    const entry = {
+      name,
+      attending,
+      days: attending==='Yes' ? Array.from(selectedDays).join(' & ') : '',
+      guests: attending==='Yes' ? parseInt(document.getElementById('guestCount').value || "1", 10) : 0,
+      notes: document.getElementById('notes').value.trim()
+    };
+
+    try{
+      await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // avoids a CORS preflight against Apps Script
+        body: JSON.stringify(entry)
+      });
+
+      document.getElementById('rsvpForm').style.display = 'none';
       const conf = document.getElementById('confirmation');
       conf.style.display = 'block';
       document.getElementById('confirmationText').textContent =
         attending === 'Yes'
           ? `We can't wait to celebrate with you, ${name}.`
           : `We'll miss you, ${name} — thank you for letting us know.`;
-    } else {
-      throw new Error('Formspree error');
+    }catch(err){
+      msgEl.textContent = "Something went wrong — please try again.";
+      submitBtn.disabled = false;
     }
-  }catch(err){
-    msgEl.textContent = "Something went wrong — please try again, or check your Formspree setup.";
-    submitBtn.disabled = false;
+  });
+
+  document.getElementById('wishForm').addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const msgEl = document.getElementById('wishMsg');
+    const name = document.getElementById('wishName').value.trim();
+    const message = document.getElementById('wishMessage').value.trim();
+
+    if(!name || !message){ msgEl.textContent = "Please add your name and a message."; return; }
+
+    const submitBtn = document.getElementById('wishSubmitBtn');
+    submitBtn.disabled = true;
+    msgEl.textContent = "Posting...";
+
+    try{
+      await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ type: 'comment', name, message })
+      });
+      document.getElementById('wishForm').reset();
+      msgEl.textContent = "Thank you for your message!";
+      submitBtn.disabled = false;
+      await loadWishes();
+    }catch(err){
+      msgEl.textContent = "Something went wrong — please try again.";
+      submitBtn.disabled = false;
+    }
+  });
+
+  async function loadWishes(){
+    const listEl = document.getElementById('wishList');
+    const emptyNote = document.getElementById('wishEmptyNote');
+    try{
+      const res = await fetch(`${API_URL}?type=comments`);
+      const data = await res.json();
+      const comments = data.comments || [];
+
+      if(comments.length === 0){
+        listEl.innerHTML = "";
+        emptyNote.style.display = 'block';
+        return;
+      }
+      emptyNote.style.display = 'none';
+
+      comments.sort((a,b)=> new Date(b.timestamp) - new Date(a.timestamp));
+      listEl.innerHTML = comments.map(c => `
+        <div class="wish-entry">
+          <p class="wish-name">${escapeHtml(c.name)}</p>
+          <p class="wish-message">“${escapeHtml(c.message)}”</p>
+        </div>`).join('');
+    }catch(err){
+      listEl.innerHTML = "";
+      emptyNote.textContent = "Couldn't load messages right now.";
+      emptyNote.style.display = 'block';
+    }
   }
-});
+
+  loadWishes();
+
+  const hostToggle = document.getElementById('hostToggle');
+  const hostPanel = document.getElementById('hostPanel');
+  hostToggle.addEventListener('click', ()=>{ hostPanel.classList.toggle('show'); });
+
+  document.getElementById('passcodeSubmit').addEventListener('click', async ()=>{
+    const val = document.getElementById('passcode').value;
+    const gateMsg = document.getElementById('gateMsg');
+    if(val === HOST_PASSCODE){
+      document.getElementById('hostGate').style.display = 'none';
+      document.getElementById('hostBody').classList.add('show');
+      await loadRSVPs(val);
+    }else{
+      gateMsg.textContent = "That passcode isn't right.";
+    }
+  });
+
+  document.getElementById('refreshBtn').addEventListener('click', ()=> loadRSVPs(HOST_PASSCODE));
+
+  async function loadRSVPs(passcode){
+    const listEl = document.getElementById('guestList');
+    const emptyNote = document.getElementById('emptyNote');
+    listEl.innerHTML = "<p class='empty-note'>Loading...</p>";
+
+    try{
+      const res = await fetch(`${API_URL}?passcode=${encodeURIComponent(passcode)}`);
+      const data = await res.json();
+
+      if(data.error){
+        listEl.innerHTML = "";
+        emptyNote.textContent = "Couldn't verify the passcode with the server.";
+        emptyNote.style.display = 'block';
+        return;
+      }
+
+      const entries = data.entries || [];
+      if(entries.length === 0){
+        listEl.innerHTML = "";
+        emptyNote.textContent = "No RSVPs yet — once guests respond, they'll appear here.";
+        emptyNote.style.display = 'block';
+        updateSummary([]);
+        return;
+      }
+      emptyNote.style.display = 'none';
+
+      entries.sort((a,b)=> new Date(b.timestamp) - new Date(a.timestamp));
+
+      listEl.innerHTML = entries.map(en=>{
+        const statusClass = en.attending === 'Yes' ? 'yes' : '';
+        const statusLabel = en.attending === 'Yes' ? 'Attending' : 'Not attending';
+        const dayText = en.days || '';
+        const guestText = en.attending === 'Yes' ? `${en.guests} guest${en.guests==1?'':'s'}` : '';
+        const detailParts = [dayText, guestText].filter(Boolean).join(' · ');
+        const notesText = en.notes ? `“${escapeHtml(en.notes)}”` : '';
+        const rsvpDate = en.timestamp ? new Date(en.timestamp) : null;
+        const rsvpDateText = rsvpDate && !isNaN(rsvpDate)
+          ? `RSVP'd ${rsvpDate.toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })} at ${rsvpDate.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' })}`
+          : '';
+        return `
+          <div class="guest-entry">
+            <div class="g-name">
+              <span>${escapeHtml(en.name)}</span>
+              <span class="g-status ${statusClass}">${statusLabel}</span>
+            </div>
+            ${detailParts ? `<div class="g-detail">${detailParts}</div>` : ''}
+            ${notesText ? `<div class="g-detail">${notesText}</div>` : ''}
+            ${rsvpDateText ? `<div class="g-detail" style="font-style:italic; opacity:0.75;">${rsvpDateText}</div>` : ''}
+          </div>`;
+      }).join('');
+
+      updateSummary(entries);
+    }catch(err){
+      listEl.innerHTML = "<p class='empty-note'>Couldn't load responses — check that API_URL is set correctly.</p>";
+    }
+  }
+
+  function updateSummary(entries){
+    const yes = entries.filter(e=>e.attending==='Yes');
+    const no = entries.filter(e=>e.attending==='No');
+    const totalGuests = yes.reduce((sum,e)=> sum + (parseInt(e.guests,10) || 0), 0);
+    document.getElementById('sumYes').textContent = yes.length;
+    document.getElementById('sumNo').textContent = no.length;
+    document.getElementById('sumGuests').textContent = totalGuests;
+  }
+
+  function escapeHtml(str){
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
 </script>
 </body>
 </html>
